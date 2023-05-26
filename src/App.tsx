@@ -1,5 +1,7 @@
+import { useState } from "react";
 import "./App.css";
 import Alert from "./components/Alert";
+import Button from "./components/Button";
 // import Footer from "./components/Footer";
 // import Header from "./components/Header";
 // import ListGroup from "./components/ListGroup";
@@ -11,6 +13,7 @@ function App() {
   //   "Palace of Illusions",
   //   "Pachinko",
   // ];
+  const [alertVisible, setAlertVisibility] = useState(false);
 
   return (
     // <div>
@@ -24,9 +27,17 @@ function App() {
     //   />
     //   <Footer />
     // </div>
-    <Alert>
-      <i>Hello World</i>
-    </Alert>
+    <>
+      {alertVisible && (
+        <Alert onClose={() => setAlertVisibility(false)}>
+          <i>Button clicked!</i>
+        </Alert>
+      )}
+
+      <Button color="secondary" onClick={() => setAlertVisibility(true)}>
+        My button
+      </Button>
+    </>
   );
 }
 
