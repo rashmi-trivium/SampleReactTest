@@ -1,17 +1,22 @@
 import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Menu from "./components/Menu";
-import Message from "./components/Message";
+import ListGroup from "./components/ListGroup";
 
 function App() {
+  const items = [
+    "Pride and Prejudice",
+    "A Man called Ove",
+    "Palace of Illusions",
+    "Pachinko",
+  ];
+
   return (
-    <>
+    <div>
       <Header />
-      <Menu />
-      <Message />
+      <ListGroup items={items} heading="My Reading List" />
       <Footer />
-    </>
+    </div>
   );
 }
 

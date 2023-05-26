@@ -1,5 +1,5 @@
 function Footer() {
-  return <p>This is a practice app</p>;
+  return <footer>This is a practice app</footer>;
 }
 
 export default Footer;
