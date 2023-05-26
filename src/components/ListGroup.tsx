@@ -3,24 +3,26 @@ import { useState } from "react";
 interface Props {
   items: string[];
   heading: string;
+  onSelectItem: (item: string) => void;
 }
 
-function ListGroup(props: Props) {
+function ListGroup({ items, heading, onSelectItem }: Props) {
   const [selectedIndex, setSelectedIndex] = useState(-1);
-  const handleClick = (index: number) => {
+  const handleClick = (item: string, index: number) => {
     setSelectedIndex(index);
+    onSelectItem(item);
   };
 
   return (
     <>
       <div className="content">
-        {props.items.length === 0 && <p>No item found</p>}
+        {items.length === 0 && <p>No item found</p>}
         <div className="flex_row flex-wrap">
           <div className="card m-2 card-width">
             <div className="card-body">
-              <h5 className="card-title">{props.heading}</h5>
+              <h5 className="card-title">{heading}</h5>
               <ul className="list-group">
-                {props.items.map((item, index) => (
+                {items.map((item, index) => (
                   <li
                     key={item}
                     className={
@@ -28,7 +30,7 @@ function ListGroup(props: Props) {
                         ? "list-group-item active"
                         : "list-group-item"
                     }
-                    onClick={() => handleClick(index)}
+                    onClick={() => handleClick(item, index)}
                   >
                     {item}
                   </li>
